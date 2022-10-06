@@ -10,5 +10,5 @@ In this project, you will be developing an application for a wholesale supplier 
 
 | DUE1 | DUE2 |  
 | :-----| :---- | 
-| 10.7 | 11.7 |
+| October 7 (Friday), 23:59 | November 4 (Friday), 23:59 |
 
