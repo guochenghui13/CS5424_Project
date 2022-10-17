@@ -1,0 +1,28 @@
+## Databases 
+
+To list all databases:
+
+```shell
+\l
+```
+
+To connect to this database:
+
+```shell
+\c
+```
+
+## Table
+
+To list all tables:
+```shell
+\dt
+```
+
+## Load Date
+
+```shell
+
+COPY Warehouse FROM '/home/stuproj/cs4224n/project_data/data_files/warehouse.csv' DELIMITER ',' CSV HEADER;
+```
+
