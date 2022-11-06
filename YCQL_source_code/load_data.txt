@@ -1,0 +1,13 @@
+COPY cs4224n_ycql."order" FROM '../../project_data/data_files/orderNew.csv' with CHUNKSIZE=5000 and INGESTRATE=10000;
+
+COPY cs4224n_ycql.order_line FROM '../../project_data/data_files/order-line.csv' with CHUNKSIZE=5000 and INGESTRATE=10000 and Null='null';
+
+COPY cs4224n_ycql.stock FROM '../../project_data/data_files/stock.csv' with CHUNKSIZE=5000 and INGESTRATE=10000;
+
+COPY cs4224n_ycql.warehouse FROM '../../project_data/data_files/warehouse.csv' with CHUNKSIZE=5000 and INGESTRATE=10000;
+
+COPY cs4224n_ycql.district FROM '../../project_data/data_files/district.csv' with CHUNKSIZE=5000 and INGESTRATE=10000;
+
+COPY cs4224n_ycql.customer FROM '../../project_data/data_files/customer.csv' with CHUNKSIZE=5000 and INGESTRATE=10000;
+
+COPY cs4224n_ycql.item  FROM '../../project_data/data_files/item.csv' with CHUNKSIZE=5000 and INGESTRATE=10000;
