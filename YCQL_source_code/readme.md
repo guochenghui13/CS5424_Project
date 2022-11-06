@@ -36,4 +36,4 @@ To stop running, run this script with a parameter `0`, i.e.,
 ### 4. get reuslts
 
 For each test file i.txt (0 ≤ i ≤ 19), its result can be found in `./logs/log-i.txt`.
-
+The summary of benchmark can be found in `./logs/summary.txt`
