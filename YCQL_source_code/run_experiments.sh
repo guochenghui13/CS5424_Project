@@ -18,7 +18,7 @@ run_experiment() {
             file_name="~/sql_test/project_files/xact_files/$i.txt"
             echo $file_name
             # nohup ~/.local/usr/bin/sshpass -p +rW8FLp3 ssh -q cs4224n@$machine_name.comp.nus.edu.sg "~/ycql_scripts/ && python driver.py ~/sql_test/project_files/xact_files/$i.txt" &
-            ~/.local/usr/bin/sshpass -p +rW8FLp3 ssh -q cs4224n@$machine_name.comp.nus.edu.sg "cd ~/ycql_scripts/ && nohup python -u driver.py ~/sql_test/project_files/xact_files/$i.txt > ~/ycql_scripts/logs/log-$i.txt" &
+            ~/.local/usr/bin/sshpass -p +rW8FLp3 ssh -q cs4224n@$machine_name.comp.nus.edu.sg "cd ~/ycql_scripts/ && nohup python -u driver.py ~/sql_test/project_files/xact_files/$i.txt > ~/ycql_scripts/logs/log-$i.txt 2> ~/ycql_scripts/logs/summary.txt" &
         done
     fi
 }
