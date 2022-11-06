@@ -7,11 +7,11 @@ def top_balance(session):
 
     # output the related information on top-10 customers
     for customer in sorted_customers[:10]:
-        # print("Name of customer:", customer.c_first, customer.c_middle, customer.c_last)
-        # print("Balance of customer's outstanding payment", customer.c_balance)
+        print("Name of customer:", customer.c_first, customer.c_middle, customer.c_last)
+        print("Balance of customer's outstanding payment", customer.c_balance)
 
         w_names = session.execute("SELECT w_name FROM warehouse where w_id = {};".format(customer.c_w_id))
         d_names = session.execute("SELECT d_name FROM district where d_w_id = {} and d_id = {};".format(customer.c_w_id, customer.c_d_id))
-        # print('Warehouse name of customer', w_names.one().w_name)
-        # print('District name of customer:', d_names.one().d_name)
+        print('Warehouse name of customer', w_names.one().w_name)
+        print('District name of customer:', d_names.one().d_name)
 

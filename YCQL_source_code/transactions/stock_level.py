@@ -15,4 +15,4 @@ def stock_level(session, W_ID, D_ID, T, L):
         if rows.one().s_quantity < T:
             cnt += 1
 
-    # print(cnt)
+    print(cnt)

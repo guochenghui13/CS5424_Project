@@ -43,7 +43,5 @@ def delivery(session, W_ID, CARRIER_ID):
             c_balance = row.c_balance +  amount
             c_delivery_cnt = row.c_delivery_cnt + 1
 
-        # print(c_balance, c_delivery_cnt)
-
         session.execute("UPDATE customer SET c_balance = {}, c_delivery_cnt = {} WHERE c_w_id = {} AND c_d_id = {} AND c_id = {};".format(c_balance, c_delivery_cnt, W_ID, DISTRICT_NO, O_ID, C_ID))
 

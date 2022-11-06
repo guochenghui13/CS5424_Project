@@ -34,6 +34,7 @@ def payment(session, C_W_ID, C_D_ID, C_ID, PAYMENT):
     session.execute("UPDATE customer SET c_balance = {}, c_ytd_payment = {}, c_payment_cnt = {} WHERE c_w_id = {} AND c_d_id = {} AND c_id = {};".format(new_c_balance, new_c_ytd_payment, new_c_payment_cnt, C_W_ID, C_D_ID, C_ID))
 
     # output
-    # print(warehouse)
-    # print(district)
-    # print(customer)
+    print(warehouse)
+    print(district)
+    print(customer)
+    print(PAYMENT)

@@ -5,9 +5,12 @@ def new_order(session, W_ID, D_ID, C_ID, NUM_ITEMS, ITEM_NUMBER, SUPPLIER_WAREHO
         W_TAX = row.w_tax
 
     C_DISCOUNT = 0
-    rows = session.execute("SELECT c_discount FROM customer WHERE c_w_id = {} AND c_d_id = {} AND c_id = {};".format(W_ID, D_ID, C_ID))
+    C_LAST, C_CREDIT = '', ''
+    rows = session.execute("SELECT c_discount, c_last, c_credit FROM customer WHERE c_w_id = {} AND c_d_id = {} AND c_id = {};".format(W_ID, D_ID, C_ID))
     for row in rows:
-        C_DISCOUNT = row.c_discount    
+        C_DISCOUNT = row.c_discount   
+        C_LAST = row.c_last
+        C_CREDIT = row.c_credit 
 
     # select and update the d_next_o_id
     D_NEXT_O_ID = -1
@@ -58,15 +61,23 @@ def new_order(session, W_ID, D_ID, C_ID, NUM_ITEMS, ITEM_NUMBER, SUPPLIER_WAREHO
     
         # create a new order line
         I_PRICE = 0
-        rows = session.execute("SELECT i_price FROM item WHERE i_id = {}".format(ITEM_NUMBER[i]))
+        I_NAME = ''
+        rows = session.execute("SELECT i_price, i_name FROM item WHERE i_id = {}".format(ITEM_NUMBER[i]))
         for row in rows:
             I_PRICE = row.i_price
+            I_NAME = row.i_name
+        
         
         ITEM_AMOUNT = QUANTITY[i] * I_PRICE
         TOTAL_AMOUNT += ITEM_AMOUNT
 
         session.execute("INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_i_id, ol_supply_w_id, ol_quantity, ol_amount, ol_dist_info) VALUES ({}, {}, {}, {}, {}, {}, {}, {}, \'{}\');".format(D_NEXT_O_ID, D_ID, W_ID, i + 1, ITEM_NUMBER[i], SUPPLIER_WAREHOUSE[i], QUANTITY[i], ITEM_AMOUNT, "S_DIST_" + str(D_ID)))
 
+        print(ITEM_NUMBER[i], I_NAME, SUPPLIER_WAREHOUSE[i], QUANTITY[i], ITEM_AMOUNT, S_QUANTITY)
+
     # calculate the TOTAL AMOUNT
     TOTAL_AMOUNT = TOTAL_AMOUNT * (1 + D_TAX + W_TAX) * (1 - C_DISCOUNT)
-    # print(TOTAL_AMOUNT)
+    print(W_ID, D_ID, C_ID, C_LAST, C_CREDIT, C_DISCOUNT)
+    print(W_TAX, D_TAX)
+    print(D_NEXT_O_ID)
+    print(NUM_ITEMS, TOTAL_AMOUNT)
